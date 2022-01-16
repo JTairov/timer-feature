@@ -12,6 +12,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'linebreak-style': 0,
     'no-var': 'error',
     'prettier/prettier': 'error',
     'prefer-const': 0,
