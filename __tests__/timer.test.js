@@ -7,7 +7,7 @@ function loadPage() {
     url: `file://${path}`,
     runScripts: 'dangerously',
     resources: 'usable',
-  }).then(dom => {
+  }).then((dom) => {
     if (dom.window.document.querySelector('script[src]')) {
       return new Promise((resolve) => {
         dom.window.addEventListener('DOMContentLoaded', () => resolve(dom));
