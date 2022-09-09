@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let leftTime = parseInt(time.textContent)
     if( leftTime > 0 ) {
       leftTime--
-      console.log('tick')
     }
     time.textContent = leftTime + ''
   }
