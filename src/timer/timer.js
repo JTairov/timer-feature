@@ -15,16 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let leftTime = parseInt(time.textContent)
     if( leftTime > 0 ) {
       leftTime--
+      console.log('tick')
     }
     time.textContent = leftTime + ''
   }
 
   let intervalId
   function startTimer() {
-    intervalId = setInterval(decreaseTime, 1000)
+    if( parseInt(time.textContent) > 0 ){
+      intervalId = setInterval(decreaseTime, 1000)
+    } else {
+      clearInterval(intervalId)
+    }
   }
 
   btn.addEventListener('click', startTimer)
-
-  clearInterval(intervalId)
 })
