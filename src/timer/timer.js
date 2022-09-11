@@ -4,29 +4,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const time = document.getElementById('time')
 
   function setTimer() {
-    if ( input.value ) {
-      time.innerHTML = input.value
-    } else time.innerHTML = '0'
+    if(input.value) {
+      time.textContent = input.value
+    }
+    else time.textContent = '0'
   }
 
-  input.addEventListener('input', setTimer)
+  let timerId
 
   function decreaseTime() {
     let leftTime = parseInt(time.textContent)
     if( leftTime > 0 ) {
       leftTime--
     }
+    if ( leftTime == 0 ) {
+      clearInterval(timerId)
+    }
     time.textContent = leftTime + ''
   }
 
-  let intervalId
   function startTimer() {
-    if( parseInt(time.textContent) > 0 ){
-      intervalId = setInterval(decreaseTime, 1000)
-    } else {
-      clearInterval(intervalId)
-    }
+    timerId = setInterval(() => {
+      decreaseTime()
+    },
+    1000)
   }
 
-  btn.addEventListener('click', startTimer)
+  btn.addEventListener('click', () => {
+    if (parseInt(time.textContent) > 0) {
+      clearInterval(timerId)
+    }
+    setTimer()
+    startTimer()
+  })
 })
